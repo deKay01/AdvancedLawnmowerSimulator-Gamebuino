@@ -18,6 +18,7 @@ extern const byte PROGMEM cutgrass[];
 extern const byte PROGMEM grass[];
 extern const byte PROGMEM logo[];
 extern const byte PROGMEM shed[];
+extern const byte PROGMEM winner[];
 
 int px;
 int py;
@@ -53,6 +54,8 @@ void loop() {
   }
   while (true) {
     if (gb.update()) {
+      gb.display.drawBitmap(0, 0, shed);
+      gb.display.drawBitmap(0, 24, winner);
     }
   }
 }
@@ -64,7 +67,7 @@ void movePlayer(int &x, int &y) {
     x = 72;
   }
   if (y < 16){
-    gb.popup(F("Well Mown!"), 60);
+    gb.popup(F("Well Mown!"), 80);
     finished = true;
   }
 }

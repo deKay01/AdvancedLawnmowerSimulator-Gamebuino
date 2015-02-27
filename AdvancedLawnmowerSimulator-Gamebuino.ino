@@ -16,19 +16,23 @@ extern const byte font5x7[]; //a large, comfy font
 extern const byte PROGMEM mowerman[];
 extern const byte PROGMEM cutgrass[];
 extern const byte PROGMEM grass[];
+extern const byte PROGMEM logo[];
+extern const byte PROGMEM shed[];
 
 int px;
 int py;
+boolean finished;
 
 void setup() {
   gb.begin();
-  gb.titleScreen(F("Test"));
+  gb.titleScreen(logo);
   px = 72;
   py = 40;
+  finished = false;
 }
 
 void loop() {
-  while (true) {
+  while (finished == false) {
     if (gb.update()) {
 
       boolean moved = false;
@@ -42,8 +46,14 @@ void loop() {
 
       int pdx = px + 16;
       drawGrass(px, py, pdx);
+      gb.display.drawBitmap(0, 0, shed);
       gb.display.drawBitmap(px, py, mowerman);
 
+    }
+  }
+  while (true) {
+    if (gb.update()) {
+     gb.popup(F("Well Mown!"), 60);
     }
   }
 }
@@ -53,6 +63,10 @@ void movePlayer(int &x, int &y) {
   if (x < (-16)) {
     y = y - 8;
     x = 72;
+  }
+  if (y < 16){
+    gb.popup(F("Well Mown!"), 60);
+    finished = true;
   }
 }
 

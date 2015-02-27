@@ -53,7 +53,6 @@ void loop() {
   }
   while (true) {
     if (gb.update()) {
-     gb.popup(F("Well Mown!"), 60);
     }
   }
 }

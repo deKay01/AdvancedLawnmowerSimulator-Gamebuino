@@ -20,6 +20,7 @@ extern const byte PROGMEM logo[];
 extern const byte PROGMEM shed[];
 extern const byte PROGMEM winner[];
 
+
 int px;
 int py;
 boolean finished;
@@ -55,7 +56,7 @@ void loop() {
   while (true) {
     if (gb.update()) {
       gb.display.drawBitmap(0, 0, shed);
-      gb.display.drawBitmap(0, 24, winner);
+      gb.display.drawBitmap(0, 16, winner);
     }
   }
 }

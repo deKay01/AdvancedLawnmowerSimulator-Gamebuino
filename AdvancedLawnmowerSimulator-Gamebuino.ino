@@ -1,5 +1,5 @@
 // ALS - Advanced Lawnmower Simulator
-const char version[] = "0.01";
+const char version[] = "0.02";
 // deKay - @deKay01 andyk@lofi-gaming.org.uk
 
 // Original version by Duncan McDonald
